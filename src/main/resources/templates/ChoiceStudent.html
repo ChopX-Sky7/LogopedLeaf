@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,17 +18,71 @@
         body {
             background-color: #6A5ACD;
         }
-        #buttons{
-            height: 10vh;
 
+        .mistake-counter {
+            cursor: pointer;
         }
 
+        input {
+            height: 5vh;
+            border-radius: 100px;
+        }
+
+        select {
+            height: 5vh;
+            border-radius: 100px;
+        }
+
+        input[type="submit"] {
+            height: 10vh;
+            padding: 1vh;
+            margin-top: 5vh;
+            border-radius: 100px;
+        }
+
+        input[type="number"] {
+            height: 10vh;
+            padding: 1vh;
+
+            border-radius: 12px;
+        }
+
+        textarea {
+            height: 20vh;
+            border-radius: 35px;
+        }
+
+        .default-text {
+            font-style: italic;
+            font-weight: 20;
+        }
+
+        .page-title {
+            margin-top: 5vh;
+        }
+
+        form {
+            background-color: #5539FF;
+            width: 100vw;
+            border-radius: 50px;
+            border: 4px solid white;
+            padding: 2vh 2vh 5vh 5vh;
+        }
+
+        img {
+            width: 5vh;
+            height: 5vh;
+        }
+
+        .mistakes-row {
+            height: 12vh;
+        }
     </style>
 </head>
 <body>
 <div class="row col-12 page-title">
     <div class="col-12">
-        <h1 class="text-center default-text text-white">Загрузить файл</h1>
+        <h1 class="text-center default-text text-white">Интерактивная сказка</h1>
     </div>
 </div>
 <br>
@@ -42,27 +96,36 @@
                 <br>
                 <div class="row">
                     <div class="col-12"><h4 class="default-text text-white">Выберите ученика:</h4></div>
-                    <div class="col-12"><input type="text" class="w-100"></div>
+                    <div class="col-12"><select type="text" class="w-100">
+                        <option><span>id</span>  <span>Name</span></option>
+                        <option></option>
+                        <option></option>
+                    </select></div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-2"><h4 class="default-text text-white">Тема сказки:</h4></div>
-                    <div class="col-10"><input type="number" min="0" class="w-100"></div>
+                    <div class="col-3"><h4 class="default-text text-white">Тема сказки:</h4></div>
+                    <div class="col-9"><input type="text" class="w-100"></div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-12"><h4 class="default-text text-white">Заметки по занятию:</h4></div>
                     <div class="col-12"><textarea class="w-100"></textarea></div>
                 </div>
-                <div class="row">
-                    <div class="col-2"><h4 class="default-text text-white">Количество ошибок:</h4></div>
-                    <div class="col-12"><input min="0" class="w-10"></input></div>
+                <br>
+                <div class="row d-flex align-items-center mistakes-row">
+                    <div class="col-5 d-flex align-items-center h-100"><h4 class="default-text text-white">Количество
+                        ошибок:</h4></div>
+                    <div class="col-2  h-100"><input min="0" type="number" class="w-100 h-100"></div>
+                    <div class="col-2  h-100 d-flex justify-content-center mistake-counter" id="mistake-minus">
+                        <img class="w-100 h-100" src="/static/img/arrow-down-icon.svg">
+                    </div>
+                    <div class="col-2 h-100 d-flex justify-content-center mistake-counter" id="mistake-plus">
+                        <img class="w-100 h-100" src="/static/img/arrow-down-icon.svg">
+                    </div>
                 </div>
                 <br>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary"> < </button>
-                    <button type="button" class="btn btn-secondary"> > </button>
-                </div>
+
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                         <input type="submit" class="w-50" value="Сохранить данные о занятии">

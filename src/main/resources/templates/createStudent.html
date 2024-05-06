@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Добавить ученика</title>
+    <link th:href="@{/static/css/default.css}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
-    <link href="../static/css/createStudent.css" rel="stylesheet">
-    <link href="../static/css/default.css" rel="stylesheet">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +19,41 @@
         body {
             background-color: #6A5ACD;
         }
+
+        .default-text{
+            font-style: italic;
+            font-weight: 20;
+        }
+
+        .page-title {
+            margin-top: 5vh;
+        }
+
+        form{
+            background-color: #5539FF;
+            width: 100vw;
+            border-radius: 50px;
+            border: 4px solid white;
+            padding: 2vh 2vh 5vh 5vh;
+        }
+
+        input{
+            height: 5vh;
+            border-radius: 100px;
+        }
+
+        input[type="submit"]{
+            height: 10vh;
+            padding: 1vh;
+            margin-top: 5vh;
+            border-radius: 100px;
+        }
+
+        textarea{
+            height: 20vh;
+            border-radius: 35px;
+        }
+
 
     </style>
 </head>
@@ -35,21 +71,27 @@
     <div class="d-flex justify-content-center row h-75">
         <div class="container col-6 row">
             <form class="container"
-                  method="post">
+                  method="post"
+                  th:object="${student}"
+            th:action="@{/student}">
                 <br>
                 <div class="row">
                     <div class="col-12"><h4 class="default-text text-white">Введите имя ребенка:</h4></div>
-                    <div class="col-12"><input type="text" class="w-100"></div>
+                    <div class="col-12">
+                        <input type="text" th:field="*{studentName}" class="w-100">
+                    </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-2"><h4 class="default-text text-white">Возраст</h4></div>
-                    <div class="col-10"><input type="number" min="0" class="w-100"></div>
+                    <div class="col-10">
+                        <input type="number" th:field="*{studentAge}" min="0" class="w-100">
+                    </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-12"><h4 class="default-text text-white">Описание дефекта:</h4></div>
-                    <div class="col-12"><textarea class="w-100"></textarea></div>
+                    <div class="col-12"><textarea class="w-100" th:field="*{studentDesc}"></textarea></div>
                 </div>
                 <div class="row">
                 <div class="col-12 d-flex justify-content-center">
